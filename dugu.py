@@ -95,7 +95,7 @@ class dugu:
 		elif self.args.cmd == 'precopy':
 			self.__isExistedDir( self.args.DIRS )
 			if self.preCopy(self.args.DIRS[0], self.args.DIRS[1]):
-				if self.args.print_duplicates or self.args.links or self.args.isolate or self.args.autoisolate or self.args.remove or self.args.autoremove:
+				if self.args.print_duplicates or self.args.links or self.args.isolate or self.args.remove or self.args.autoremove:
 					print ''
 					self.args.cmd = 'scan'
 					org_cwd = self.cwd[:]
