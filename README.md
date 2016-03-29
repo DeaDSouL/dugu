@@ -24,37 +24,45 @@ Its main purpose is avoiding the duplicates.
 `dugu [-h] [-v] [-s] [-f] [-t {md5,sha1,sha256,sha512}] [-p | -l | -i | -r | -R] scan DIR | precopy DIR1 DIR2`
 
 
-
 ### How to
 Let's say we want to check the folder called: 'Pictures':
 
 
 If you only want to scan 'Pictures', try:
-`dugu.py scan Pictures`
+
+    dugu.py scan Pictures
 
 If you want to see the list of duplicates, try:
-`dugu.py -p scan Pictures`
+
+    dugu.py -p scan Pictures
 
 If you want to visually see the duplicates, try:
-`dugu.py -l scan Pictures`
+
+    dugu.py -l scan Pictures
 
 If you want to isolate all the duplicates, try:
-`dugu.py -i scan Pictures`
+
+    dugu.py -i scan Pictures
 
 If you want to remove the duplicates, try:
-`dugu.py -r scan Pictures`
+
+    dugu.py -r scan Pictures
 
 If you want to auto-remove the duplicates, try:
-`dugu.py -R scan Pictures`
+
+    dugu.py -R scan Pictures
 
 If you want to ignore the cache, and force dugu to re-scan 'Pictures', try:
-`dugu.py -f scan Pictures`
+
+    dugu.py -f scan Pictures
 
 If you want to use 'sha1' as the scan's algorithm, try:
-`dugu.py -t sha1 scan Pictures`
+
+    dugu.py -t sha1 scan Pictures
 
 If you want to execlude the files in the folder 'old_pic' that folder 'Pictures' already have, try:
-`dugu.py precopy old_pic Pictures`
+
+    dugu.py precopy old_pic Pictures
 PS: Please note, that the previous command will only execlude the files from 'old_pic' that are being existed in both directories. It **will not** touch the duplicates that live in 'old_pic'; Unless you used one of `[-p | -l | -i | -r | -R]` with the argument `precopy`
 
 
