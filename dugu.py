@@ -106,6 +106,8 @@ class dugu:
 		else:
 			pass
 
+		self.__exit(status=0)
+
 	# ------------------------------------------------------------------
 
 	def findDups(self):
@@ -661,7 +663,6 @@ class dugu:
 	# ------------------------------------------------------------------
 
 	def __setcwd(self, cwd=None):
-		# self.__isExistedDir(cwd)
 		self.cwd = cwd[:]
 		self.cwd = os.path.abspath(self.cwd)
 
@@ -685,9 +686,9 @@ class dugu:
 
 	# ------------------------------------------------------------------
 
-	def __exit(self, msg=None):
+	def __exit(self, msg=None, status=1):
 		if msg != None: print msg
-		exit(0)
+		exit(status)
 	# ------------------------------------------------------------------
 
 	def __resetApp(self):
