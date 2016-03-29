@@ -10,7 +10,9 @@ Mubarak Alrashidi, who's known as DeaDSouL.
 
 ### Installation
 It's not clear for now, how it's going to be installed. Since it's not being packaged yet.
+
 But you can download it, then manually install it by:
+
 **Globally:** (don't forget the `su`/`sudo`)
 
     $ mv dugu.py /opt/
