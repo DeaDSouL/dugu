@@ -11,6 +11,17 @@ Mubarak Alrashidi, who's known as DeaDSouL.
 ### Installation
 It's not clear for now, how it's going to be installed. Since it's not being packaged yet.
 
+But you can download it, then manually install it by:
+
+**Globally:** (don't forget the `su`/`sudo`)
+
+    $ mv dugu.py /opt/
+    $ ln -s /opt/dugu.py /usr/bin/dugu
+
+**Or Locally:**
+
+    $ mv dugu.py ~/bin/dugu
+
 
 ### The argument 'scan'
 This argument is meant for finding and/or getting rid of the duplicates.
@@ -24,39 +35,50 @@ Its main purpose is avoiding the duplicates.
 `dugu [-h] [-v] [-s] [-f] [-t {md5,sha1,sha256,sha512}] [-p | -l | -i | -r | -R] scan DIR | precopy DIR1 DIR2`
 
 
-
 ### How to
 Let's say we want to check the folder called: 'Pictures':
 
 
 If you only want to scan 'Pictures', try:
-`dugu.py scan Pictures`
+
+    dugu scan Pictures
 
 If you want to see the list of duplicates, try:
-`dugu.py -p scan Pictures`
+
+    dugu -p scan Pictures
 
 If you want to visually see the duplicates, try:
-`dugu.py -l scan Pictures`
+
+    dugu -l scan Pictures
 
 If you want to isolate all the duplicates, try:
-`dugu.py -i scan Pictures`
+
+    dugu -i scan Pictures
 
 If you want to remove the duplicates, try:
-`dugu.py -r scan Pictures`
+
+    dugu -r scan Pictures
 
 If you want to auto-remove the duplicates, try:
-`dugu.py -R scan Pictures`
+
+    dugu -R scan Pictures
 
 If you want to ignore the cache, and force dugu to re-scan 'Pictures', try:
-`dugu.py -f scan Pictures`
+
+    dugu -f scan Pictures
 
 If you want to use 'sha1' as the scan's algorithm, try:
-`dugu.py -t sha1 scan Pictures`
+
+    dugu -t sha1 scan Pictures
 
 If you want to execlude the files in the folder 'old_pic' that folder 'Pictures' already have, try:
-`dugu.py precopy old_pic Pictures`
-PS: Please note, that the previous command will only execlude the files from 'old_pic' that are being existed in both directories. It **will not** touch the duplicates that live in 'old_pic'; Unless you used one of `[-p | -l | -i | -r | -R]` with the argument `precopy`
 
+    dugu precopy old_pic Pictures
+PS: Please note, that the previous command will only execlude the files from 'old_pic' that are being existed in both directories. It **will not** touch the duplicates that might be in 'old_pic'; Unless you use one of `[-p | -l | -i | -r | -R]` with the argument `precopy`
+
+To get the help menu, try:
+
+    dugu -h
 
 
 ### License
