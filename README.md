@@ -55,6 +55,7 @@ If you want to use 'sha1' as the scan's algorithm, try:
 
 If you want to execlude the files in the folder 'old_pic' that folder 'Pictures' already have, try:
 `dugu.py precopy old_pic Pictures`
+PS: Please note, that the previous command will only execlude the files from 'old_pic' that are being existed in both directories. It **will not** touch the duplicates that live in 'old_pic'; Unless you used one of `[-p | -l | -i | -r | -R]` with the argument `precopy`
 
 
 
