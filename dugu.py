@@ -13,6 +13,7 @@ from stat import S_ISSOCK
 from shutil import rmtree, copytree, move
 from distutils.dir_util import copy_tree
 from getpass import getuser
+from sys import exit
 
 class dugu:
 
@@ -88,9 +89,11 @@ class dugu:
 
 		# Main cmd
 		if self.args.cmd == 'scan':
+			self.__isExistedDir( self.args.DIR )
 			self.__setcwd(self.args.DIR)
 			self.findDups()
 		elif self.args.cmd == 'precopy':
+			self.__isExistedDir( self.args.DIRS )
 			if self.preCopy(self.args.DIRS[0], self.args.DIRS[1]):
 				if self.args.print_duplicates or self.args.links or self.args.isolate or self.args.autoisolate or self.args.remove or self.args.autoremove:
 					print ''
@@ -657,14 +660,34 @@ class dugu:
 
 	# ------------------------------------------------------------------
 
-	def __setcwd(self, cwd=os.getcwd()):
-		if os.path.exists(cwd) and os.path.isdir(cwd):
-			self.cwd = cwd
-		else:
-			self.cwd = os.getcwd()
-
+	def __setcwd(self, cwd=None):
+		# self.__isExistedDir(cwd)
+		self.cwd = cwd[:]
 		self.cwd = os.path.abspath(self.cwd)
 
+	# ------------------------------------------------------------------
+
+	def __isExistedDir(self, dirs=None):
+		invalidDir = False
+		
+		if type(dirs) == tuple or type(dirs) == list:
+			for d in dirs:
+				self.__isExistedDir(d)
+		elif dirs != None:
+			if not os.path.exists(dirs) or not os.path.isdir(dirs):
+				invalidDir = True
+		else:
+			invalidDir = True
+
+		if invalidDir:
+			print 'Invalid DIR: %s' % dirs
+			self.__exit('Exiting,..')
+
+	# ------------------------------------------------------------------
+
+	def __exit(self, msg=None):
+		if msg != None: print msg
+		exit(0)
 	# ------------------------------------------------------------------
 
 	def __resetApp(self):
