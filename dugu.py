@@ -2,12 +2,13 @@
 # -*- coding: UTF-8 -*-
 # By: DeaDSouL (Mubarak Alrashidi)
 #---------------------------------
-
+# 
 # @TODO CODE:
-# 01.    Change the precopy works.
+# 01.    Change the way 'precopy' works.
 #            A.  Instead of copying the whole 'DIR1' then deleting the duplicates
 #                copy only the 'DIR1' structure, then copying the unique files.
 #            B.  Instead of placing '_UniqueFiles_' under 'DIR1', put it in tmp path.
+# 
 
 import os
 import hashlib
