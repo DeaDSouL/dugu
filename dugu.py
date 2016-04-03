@@ -178,7 +178,8 @@ class dugu:
 
 		# Copy directory with its all contents
 		print 'Copying Files....                                         \r',
-		self.tmp_flash['copiedFiles'] = copy_tree(src, self.tmp_flash['uniqueDir'])
+		# using `preserve_symlinks=1` in `copy_tree()` will fix issue #1
+		self.tmp_flash['copiedFiles'] = copy_tree(src, self.tmp_flash['uniqueDir'], preserve_symlinks=1)
 		print 'Copying Files..........Done                               \r'
 
 		org_cwd = self.cwd[:]
