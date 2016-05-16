@@ -80,6 +80,8 @@ To get the help menu, try:
 
     dugu -h
 
+Alternative ways to get dugu to run. (tested on a raspberry pi 5/14/2016) <br>
+    python /opt/dugu.py scan Pictures
 
 ### License
 To be honest, I chose this license because it's the one that is being used by Linux kernel.
