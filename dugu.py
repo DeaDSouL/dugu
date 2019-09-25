@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 #/usr/bin/env python2
 # -*- coding: UTF-8 -*-
 # By: DeaDSouL (Mubarak Alrashidi)
@@ -360,7 +360,14 @@ class dugu:
                     dups_sum = 0
                     for sig,files in self.dups_result['dups'].iteritems():
                         dups_sum += len(files)-1
-                    if not self.__validatedCache() or self.dups_result['dups_count'] != dups_sum or self.dups_result['dups_sets'] != len(self.dups_result['dups']):
+                    #if not self.__validatedCache() or self.dups_result['dups_count'] != dups_sum or self.dups_result['dups_sets'] != len(self.dups_result['dups']):
+                    if not self.__validatedCache():
+                        print 'Changes Detected.......Done \r'
+                        self.__preScanDir()
+                    elif self.dups_result['dups_count'] != dups_sum:
+                        print 'Changes Detected.......Done \r'
+                        self.__preScanDir()
+                    elif self.dups_result['dups_sets'] != len(self.dups_result['dups']):
                         print 'Changes Detected.......Done \r'
                         self.__preScanDir()
                     else:
@@ -376,8 +383,14 @@ class dugu:
     # ------------------------------------------------------------------
 
     def __validatedCache(self):
-        if self.scan_result['total_files'] != len(self.scan_result['files']):
-            return False
+        # Sometimes scan_result['files'] is less than scan_result['total_files'] by 1
+        # appearantly it's a bug, we need to inspect the code responsible of calculating
+        # the total_files, when we save it in the cache!!
+        # for the time being, we just comment the following 2 lines
+        # ----------
+        #if self.scan_result['total_files'] != len(self.scan_result['files']):
+        #    return False
+        # ----------
         i = 0
         # arr[0]=size, arr[1]=mtime, arr[2]=hash
         for file,arr in self.scan_result['files'].iteritems():
