@@ -6,4 +6,5 @@
 
 # Other files and folders
 .DS_Store
-dugu.dev
+*.py.old
+*.dev
