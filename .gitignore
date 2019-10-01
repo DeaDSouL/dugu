@@ -8,3 +8,4 @@
 .DS_Store
 *.py.old
 *.dev
+venv
