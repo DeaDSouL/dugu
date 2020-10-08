@@ -4,6 +4,9 @@
 *.swp
 *~
 
+# Python
+*.pyc
+
 # Other files and folders
 .DS_Store
 *.py.old
