@@ -46,12 +46,12 @@ from dugu.utils import (
     bytes_to_readable_units,
     exit,
 )
-from dugu.io_output import (
+from dugu.app_output import (
     _print as p,
     log as log,
     print_line as pl,
 )
-from dugu.io_input import (
+from dugu.app_input import (
     parse_args,
 )
 

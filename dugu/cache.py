@@ -25,7 +25,7 @@ import pickle
 # Third party imports
 
 # Local application imports
-from dugu.io_input import args_namespace
+from dugu.app_input import args_namespace
 from dugu.data import (
     DuGuScannedData,
     DuGuDuplicatesData,
@@ -46,7 +46,7 @@ from dugu.constants import (
     DUGU_CACHE_DIR,
     DUGU_CACHE_PATH,
 )
-from dugu.io_output import (
+from dugu.app_output import (
     _print as p,
     _print_fixed as pf,
     reprint as rp,

@@ -55,11 +55,11 @@ from dugu.utils import (
     remove_empty_dirs,
     exit,
 )
-from dugu.io_input import (
+from dugu.app_input import (
     prompt,
     args_namespace,
 )
-from dugu.io_output import (
+from dugu.app_output import (
     waiting_indicator,
     _print as p,
     _print_fixed as pf,

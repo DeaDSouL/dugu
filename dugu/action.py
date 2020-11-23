@@ -52,11 +52,11 @@ from dugu.utils import (
     iteritems,
     exit,
 )
-from dugu.io_input import (
+from dugu.app_input import (
     prompt,
     args_namespace,
 )
-from dugu.io_output import (
+from dugu.app_output import (
     _print as p,
     _print_fixed as pf,
     reprint_fixed as rpf,
