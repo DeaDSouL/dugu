@@ -24,7 +24,7 @@ DuGu v1.0.0:
     New features:
         * -S, --follow-symlinks: which if used, will follow all symlinked directories even if they were out of scanned
           directory.
-        * -l, --soft-links: which generated soft links of the duplicates. formerly known as (--links).
+        * -l, --soft-links: which generates soft links of the duplicates. formerly known as (--links).
         * -L, --hard-links: which generates hard links of the duplicates.
     Fixes:
         * Copy only the unique files in 'precopy', instead of how it used to be in v0.1.
