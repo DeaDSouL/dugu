@@ -18,7 +18,6 @@
 from __future__ import absolute_import
 from multiprocessing import cpu_count
 from sys import exit as sys_exit
-import errno
 from contextlib import suppress
 from os import (
     path as os_path,
