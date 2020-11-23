@@ -1,0 +1,44 @@
+------------------------------------------------------------------------------------------------------------------------
+
+TODO in future:
+    * Let the app in scanning process decide when to or not to use the Multiprocessing module.
+      (e.g: if 80% of file's sizes are bigger than 2.6MiB, then use Multiprocessing module)
+    * export results to JSON.
+    * See if we'll gain anything by adding a counter for the total instance in DuGuFileInfo().
+        --> didn't work since they live in sub-processes and die when sub-processes die.
+    * instead of printing results in DuGuScan(), yield what to print?
+
+------------------------------------------------------------------------------------------------------------------------
+
+DuGu v1.0.0:
+    Changes:
+        * Rewrote the code from scratch with OOP concept in mind.
+        * Used pure Python3 code, and dropped python2 support.
+        * Implemented Multiprocessing and Threading modules only when they're affective.
+        * DuGu is now 4.134 times faster than how it used to be, when dealing with too many large files.
+        * Check the free available disk space before proceeding with the (precopy or isolation) process.
+        * Splitting the old huge one 'dugu.py' file into multiple smaller specialized objects.
+        * The result of (scan process, and found duplicates) are being stored in objects instead of dictionary
+          variables.
+        * Caching objects instead of a dictionary variables.
+    New features:
+        * -S, --follow-symlinks: which if used, will follow all symlinked directories even if they were out of scanned
+          directory.
+        * -l, --soft-links: which generates soft links of the duplicates. formerly known as (--links).
+        * -L, --hard-links: which generates hard links of the duplicates.
+    Fixes:
+        * #2:   precopy takes long time if DIR1 is huge:
+                Now it copies only the unique files in 'precopy', instead of how it used to be in v0.1.
+        * #4:   Incorrect files counting while validating cache:
+                The function that generates the files count, wasn't counting the links, while links were being counted
+                in cache. Which is being fixed.
+        * #5:   Cache is not always loaded even if it is valid:
+                All paths given by user, are being converted to the absolute paths to avoid similar issues.
+
+------------------------------------------------------------------------------------------------------------------------
+
+DuGu v0.1:
+    Changes:
+        * ...
+
+------------------------------------------------------------------------------------------------------------------------

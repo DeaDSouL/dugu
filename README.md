@@ -15,12 +15,13 @@ But you can download it, then manually install it by:
 
 **Globally:** (don't forget the `su`/`sudo`)
 
-    $ mv dugu.py /opt/
-    $ ln -s /opt/dugu.py /usr/bin/dugu
+    $ mv src /usr/local/src/dugu
+    $ ln -s /usr/local/src/dugu/dugu.py /usr/local/bin/dugu
 
 **Or Locally:**
 
-    $ mv dugu.py ~/bin/dugu
+    $ mv src ~/.local/share/dugu
+    $ ln -s ~/.local/share/dugu/dugu.py ~/bin/dugu
 
 
 ### The argument 'scan'
@@ -32,7 +33,7 @@ Its main purpose is avoiding the duplicates.
 
 
 ### Usage:
-`dugu [-h] [-v] [-s] [-f] [-t {md5,sha1,sha256,sha512}] [-p | -l | -i | -r | -R] scan DIR | precopy DIR1 DIR2`
+`dugu [-h] [-V] [-v] [-s] [-S] [-f] [-t {md5,sha1,sha256,sha512}] [-p | -l | -L | -i | -r | -R] scan DIR | precopy DIR1 DIR2`
 
 
 ### How to
@@ -47,9 +48,13 @@ If you want to see the list of duplicates, try:
 
     dugu -p scan Pictures
 
-If you want to visually see the duplicates, try:
+If you want to visually see the duplicates (using: soft-links), try:
 
     dugu -l scan Pictures
+
+If you want to visually see the duplicates (using: hard-links), try:
+
+    dugu -L scan Pictures
 
 If you want to isolate all the duplicates, try:
 
@@ -71,21 +76,28 @@ If you want to use 'sha1' as the scan's algorithm, try:
 
     dugu -t sha1 scan Pictures
 
-If you want to execlude the files in the folder 'old_pic' that folder 'Pictures' already have, try:
+If you want to follow all links that point to files, try:
+
+    dugu -s scan Pictures
+
+If you want to follow all links that point to directories, try:
+
+    dugu -S scan Pictures
+
+If you want to exclude the files in the folder 'old_pic' that folder 'Pictures' already have, try:
 
     dugu precopy old_pic Pictures
-PS: Please note, that the previous command will only execlude the files from 'old_pic' that are being existed in both directories. It **will not** touch the duplicates that might be in 'old_pic'; Unless you use one of `[-p | -l | -i | -r | -R]` with the argument `precopy`
+PS: Please note, that the previous command will only exclude the files from 'old_pic' that are being existed in both directories. It **will not** touch the duplicates that might be in 'old_pic'; Unless you use one of `[-p | -l | -i | -r | -R]` with the argument `precopy`
+
+For example, if you want to auto-remove the duplicates found in the produced files, try:
+
+    dugu -r precopy old_pic Pictures
 
 To get the help menu, try:
 
     dugu -h
 
-Alternative ways to get dugu to run. (tested on a raspberry pi 5/14/2016) <br>
-    python /opt/dugu.py scan Pictures
-
 ### License
-To be honest, I chose this license because it's the one that is being used by Linux kernel.
-
 Although, this program is a free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 2 of the License, or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.

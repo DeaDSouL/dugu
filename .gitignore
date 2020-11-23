@@ -4,7 +4,16 @@
 *.swp
 *~
 
+# Python
+*.pyc
+__pycache__
+
 # Other files and folders
 .DS_Store
 *.py.old
 *.dev
+*-dev
+venv*
+
+# IDEs
+*.idea
