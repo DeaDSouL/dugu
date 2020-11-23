@@ -30,6 +30,9 @@ DuGu v1.0.0:
         * #2:   precopy takes long time if DIR1 is huge:
                 Now it copies only the unique files in 'precopy', instead of how it used to be in v0.1.
         * #4:   Incorrect files counting while validating cache:
+                The function that generates the files count, wasn't counting the links, while links were being counted
+                in cache. Which is being fixed.
+        * #5:   Cache is not always loaded even if it is valid:
                 All paths given by user, are being converted to the absolute paths to avoid similar issues.
 
 ------------------------------------------------------------------------------------------------------------------------
