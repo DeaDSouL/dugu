@@ -27,7 +27,10 @@ DuGu v1.0.0:
         * -l, --soft-links: which generates soft links of the duplicates. formerly known as (--links).
         * -L, --hard-links: which generates hard links of the duplicates.
     Fixes:
-        * Copy only the unique files in 'precopy', instead of how it used to be in v0.1.
+        * #2:   precopy takes long time if DIR1 is huge:
+                Now it copies only the unique files in 'precopy', instead of how it used to be in v0.1.
+        * #4:   Incorrect files counting while validating cache:
+                All paths given by user, are being converted to the absolute paths to avoid similar issues.
 
 ------------------------------------------------------------------------------------------------------------------------
 
