@@ -36,7 +36,6 @@ from dugu.utils import (
     path_is,
     hashlib_md5,
     mkdir,
-    iteritems,
     remove_file,
     build_path,
 )
@@ -256,7 +255,7 @@ class DuGuCache(object):
             i = 0
 
             # arr[0]=size, arr[1]=mtime, arr[2]=hash
-            for file, arr in iteritems(self._cache_data.metadata):
+            for file, arr in self._cache_data.metadata.items():
                 i += 1
                 rp('Validating %sCache: (%d/%d) - %d%% \r' % (self._cache_desc, i, len(self._cache_data),
                                                               (i * 100 / len(self._cache_data))))

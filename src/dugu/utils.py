@@ -610,24 +610,6 @@ def has_multiple_cores() -> bool:
 # ------------------------------
 
 
-def iteritems(dic=None) -> dict:
-    """ Returns an iterator over the dictionary’s (key, value) pairs.
-    Return type:
-                On Python2 -> 'dictionary-itemiterator'
-                On Python3 -> 'dict_items' """
-
-    if ver.py.major == 2:
-        return dic.iteritems()
-    elif ver.py.major == 3:
-        return dic.items()
-
-
-def foreach(dic=None):
-    """ Alias to our universal iteritems(). """
-
-    return iteritems(dic)
-
-
 def _exit(msg=None, status=1) -> None:
     """ Prints the given msg if there is any, then exit app with the given exit code. """
 

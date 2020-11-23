@@ -49,7 +49,6 @@ from dugu.utils import (
     copy_directory_structures,
     move_files_to_replicant_except,
     remove_files_except,
-    iteritems,
     _exit,
 )
 from dugu.app_input import (
@@ -91,7 +90,7 @@ class DuGuScanAction(DuGuDuplicatesCore):
 
         p()
         i1 = 0
-        for sig, files in iteritems(self._dups_result.duplicated_files):
+        for sig, files in self._dups_result.duplicated_files.items():
             i1 += 1
             p('%s) Signature: %s :' % (i1, sig))
             i2 = 0
@@ -130,7 +129,7 @@ class DuGuScanAction(DuGuDuplicatesCore):
         p('Copying Dir Structure..Done \r')
 
         i = 0
-        for sig, files in iteritems(self._dups_result.duplicated_files):
+        for sig, files in self._dups_result.duplicated_files.items():
             i += 1
             if i > 1:
                 pl(60)
@@ -158,7 +157,7 @@ class DuGuScanAction(DuGuDuplicatesCore):
 
     def remove_duplicates_with_prompt(self):
         i = 0
-        for sig, files in iteritems(self._dups_result.duplicated_files):
+        for sig, files in self._dups_result.duplicated_files.items():
             i += 1
             if i > 1:
                 pl(60)
@@ -204,7 +203,7 @@ class DuGuScanAction(DuGuDuplicatesCore):
 
     def remove_duplicates_auto(self):
         i = 0
-        for sig, files in iteritems(self._dups_result.duplicated_files):
+        for sig, files in self._dups_result.duplicated_files.items():
             i += 1
             if i > 1:
                 pl(60)
@@ -247,7 +246,8 @@ class DuGuScanAction(DuGuDuplicatesCore):
                     re_print=False, lvl=0)
                 return False
 
-            for sig, files in iteritems(self._dups_result.duplicated_files):
+            # for sig, files in iteritems(self._dups_result.duplicated_files):
+            for sig, files in self._dups_result.duplicated_files.items():
                 sub_rep_dir = os_path.join(sub_links_path, sig)
                 log(msg='Creating new set directory: %s' % sub_rep_dir, verbose=self._args.verbose)
                 if not mkdir(sub_rep_dir, verbose=False, check=False):

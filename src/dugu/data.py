@@ -23,7 +23,6 @@ from __future__ import absolute_import
 from dugu.utils import (
     find_files_recursively,
     hash_string,
-    iteritems,
     os_path,
     _exit,
 )
@@ -315,7 +314,7 @@ class DuGuDuplicatesData:
     def calculate(self) -> None:
         if not self.__calculated:
             count, size = 0, 0
-            for sig, files in iteritems(self.__duplicated_files):
+            for sig, files in self.__duplicated_files.items():
                 count += len(files) - 1
                 size += os_path.getsize(files[0]) * (len(files) - 1)
 
