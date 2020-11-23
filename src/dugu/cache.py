@@ -233,14 +233,14 @@ class DuGuCache(object):
     def _is_validated(self, against=None) -> bool:
         """ Return True if the cache file is valid, otherwise return False. """
 
-        def __fail(s):
-            pf('Validating %sCache Data' % s._cache_desc, status='Fail',
+        def __fail(s, cache_desc=''):
+            pf('Validating %sCache Data' % cache_desc, status='Fail',
                suffix='\r', suffix_space=True, max_cols=MAX_LINE_COLUMNS)
             s.remove()
             return False
 
-        def __done(s):
-            pf('Validating %sCache Data' % s._cache_desc, status='Done',
+        def __done(cache_desc=''):
+            pf('Validating %sCache Data' % cache_desc, status='Done',
                suffix='\r', suffix_space=True, max_cols=MAX_LINE_COLUMNS)
             return True
 
@@ -251,7 +251,7 @@ class DuGuCache(object):
                        suffix_space=True, max_cols=MAX_LINE_COLUMNS)
                 if len(self._cache_data) < len(against):
                     pf('New Files Detected', status='Done', suffix='\r', suffix_space=True, max_cols=MAX_LINE_COLUMNS)
-                return __fail(self)
+                return __fail(self, cache_desc=self._cache_desc)
 
             i = 0
 
@@ -263,17 +263,17 @@ class DuGuCache(object):
                 if not os_path.exists(file) or not os_path.isfile(file):
                     pf('Missing Files Detected', status='Done', suffix='\r',
                        suffix_space=True, max_cols=MAX_LINE_COLUMNS)
-                    return __fail(self)
+                    return __fail(self, cache_desc=self._cache_desc)
 
                 if arr[0] != os_path.getsize(file):
                     pf('Diff Sizes Detected', status='Done', suffix='\r', suffix_space=True, max_cols=MAX_LINE_COLUMNS)
-                    return __fail(self)
+                    return __fail(self, cache_desc=self._cache_desc)
 
                 if arr[1] != time_strftime(DATETIME_FORMAT, time_localtime(os_path.getmtime(file))):
                     pf('Diff mTime Detected', status='Done', suffix='\r', suffix_space=True, max_cols=MAX_LINE_COLUMNS)
-                    return __fail(self)
+                    return __fail(self, cache_desc=self._cache_desc)
 
-        return __done(self)
+        return __done(cache_desc=self._cache_desc)
 
     # ------------------------------
     #           PRIVATE
