@@ -25,7 +25,7 @@ from dugu.utils import (
     hash_string,
     iteritems,
     os_path,
-    exit,
+    _exit,
 )
 
 
@@ -419,4 +419,4 @@ class DuGuUniqueData:
 
 if __name__ == '__main__':
     print('This file is part of DuGu package.')
-    exit('And is not meant to run directly.')
+    _exit('And is not meant to run directly.')

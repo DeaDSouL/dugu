@@ -53,7 +53,7 @@ from dugu.utils import (
     copy_directory_structures,
     copy_file_to_replicant,
     remove_empty_dirs,
-    exit,
+    _exit,
 )
 from dugu.app_input import (
     prompt,
@@ -90,7 +90,7 @@ class DuGuBaseCore:
         self._cwd = os_path.abspath(cwd)
 
         if not self.__passed_checks(args=args, cwd=cwd):
-            exit('Exiting,..', status=1)
+            _exit('Exiting,..', status=1)
 
     # ------------------------------
     #           PROPERTIES
@@ -385,7 +385,7 @@ class DuGuUniqueCore(DuGuBaseCore):
 
         # must be after:    self._src_scan.start() AND self._dst_scan.start()
         if not self.__cp_src_dir_structure():
-            exit('Aborting,..', status=1)
+            _exit('Aborting,..', status=1)
 
         self._unique_result = DuGuUniqueData(src=self.src_result, dst=self.dst_result)
         self._unique_cache = DuGuUniqueCache(args=args, cwd=self.dst_path, _type='precopy', cache_desc='Unique')
@@ -576,4 +576,4 @@ class DuGuUniqueCore(DuGuBaseCore):
 
 if __name__ == '__main__':
     p('This file is part of DuGu package.')
-    exit('And is not meant to run directly.')
+    _exit('And is not meant to run directly.')

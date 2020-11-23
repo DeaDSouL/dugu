@@ -50,7 +50,7 @@ from dugu.utils import (
     move_files_to_replicant_except,
     remove_files_except,
     iteritems,
-    exit,
+    _exit,
 )
 from dugu.app_input import (
     prompt,
@@ -293,4 +293,4 @@ class DuGuPreCopyAction(DuGuUniqueCore):
 
 if __name__ == '__main__':
     p('This file is part of DuGu package.')
-    exit('And is not meant to run directly.')
+    _exit('And is not meant to run directly.')

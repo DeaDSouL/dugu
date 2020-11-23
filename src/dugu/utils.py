@@ -628,7 +628,7 @@ def foreach(dic=None):
     return iteritems(dic)
 
 
-def exit(msg=None, status=1) -> None:
+def _exit(msg=None, status=1) -> None:
     """ Prints the given msg if there is any, then exit app with the given exit code. """
 
     if msg is not None:
@@ -641,4 +641,4 @@ def exit(msg=None, status=1) -> None:
 
 if __name__ == '__main__':
     p('This file is part of DuGu package.')
-    exit('And is not meant to run directly.')
+    _exit('And is not meant to run directly.')

@@ -44,7 +44,7 @@ from dugu.utils import (
     path_is,
     remove_empty_dirs,
     bytes_to_readable_units,
-    exit,
+    _exit,
 )
 from dugu.app_output import (
     _print as p,
@@ -61,7 +61,7 @@ from dugu.app_input import (
 
 class DuGuMain:
 
-    def __init__(self) -> exit:
+    def __init__(self) -> _exit:
         import tracemalloc
         tracemalloc.start()
         t1_start = time.perf_counter()
@@ -77,7 +77,7 @@ class DuGuMain:
             current, peak = tracemalloc.get_traced_memory()
             p(f"Current memory usage is {current / 10 ** 6}MB; Peak was {peak / 10 ** 6}MB")
             tracemalloc.stop()
-            exit(status=0)
+            _exit(status=0)
 
     def __main(self) -> None:
         """ Main method that handles the given CMD. """
@@ -89,13 +89,13 @@ class DuGuMain:
         self.__pre_main()
 
         if self.args.version:
-            exit('DuGu Version: ' + ver.dugu.full + '\n', 0)
+            _exit('DuGu Version: ' + ver.dugu.full + '\n', 0)
         elif self.args.cmd == 'scan':
             self.__action_scan()
         elif self.args.cmd == 'precopy':
             self.__action_precopy()
         else:
-            exit('Incorrect CMD!', status=1)
+            _exit('Incorrect CMD!', status=1)
 
         return
 
@@ -122,14 +122,14 @@ class DuGuMain:
             And the pre-defined DuGu path is an existed usable directory. """
 
         if CURRENT_PYTHON_VERSION < REQUIRED_PYTHON_VERSION:
-            exit(msg='Minimum required Python version is: %s not %s' % (REQUIRED_PYTHON_VERSION,
-                                                                        CURRENT_PYTHON_VERSION), status=1)
+            _exit(msg='Minimum required Python version is: %s not %s' % (REQUIRED_PYTHON_VERSION,
+                                                                         CURRENT_PYTHON_VERSION), status=1)
 
         dugu_path = mktemp_dir(_dir=DUGU_DIR_NAME, verbose=self.args.verbose)
         if dugu_path != DUGU_BASE_PATH \
                 or not path_is(paths=dugu_path, checks='Edrw', log_lvl=0,
                                verbose=self.args.verbose, re_print=False):
-            exit('Could not use the pre-defined DuGu path!')
+            _exit('Could not use the pre-defined DuGu path!')
 
         return
 
@@ -216,4 +216,4 @@ class DuGuMain:
 
 if __name__ == '__main__':
     p('This file is part of DuGu package.')
-    exit('And is not meant to run directly.')
+    _exit('And is not meant to run directly.')
