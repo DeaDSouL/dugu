@@ -6,7 +6,7 @@
 # Version:  1.x.x
 # Author:   DeaDSouL (Mubarak Alrashidi)
 # URL:      https://unix.cafe/
-# GitHub:   https://github.com/DeaDSouL/dugu
+# GitLab:   https://gitlab.com/DeaDSouL/dugu
 # Twitter:  https://twitter.com/_DeaDSouL_
 # License:  GPLv3
 # ----------------------------------------------------------------------
