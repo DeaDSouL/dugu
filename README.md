@@ -1,3 +1,7 @@
+# IMPORTANT
+The repository has been moved to [GitLab.com/DeaDSouL/dugu](https://gitlab.com/DeaDSouL/dugu).
+
+
 # dugu
 The Duplicates Guru
 
