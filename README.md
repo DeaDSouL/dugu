@@ -13,7 +13,10 @@ Mubarak Alrashidi, who's known as DeaDSouL.
 
 
 ### Installation
+
 It's not clear for now, how it's going to be installed. Since it's not being packaged yet.
+
+Requires (minimum) Python 3.8.6
 
 But you can download it, then manually install it by:
 
